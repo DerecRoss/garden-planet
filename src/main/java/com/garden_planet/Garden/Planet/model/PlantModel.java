@@ -10,6 +10,8 @@ public class PlantModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
+
     private String water;
 
     private String sunlight;
