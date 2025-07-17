@@ -17,4 +17,7 @@ public class PlantModel {
     @Enumerated(EnumType.STRING)
     private PlantType plantType;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 }

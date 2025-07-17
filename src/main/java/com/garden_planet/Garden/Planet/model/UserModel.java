@@ -2,6 +2,8 @@ package com.garden_planet.Garden.Planet.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "user_tb")
 public class UserModel {
@@ -16,4 +18,6 @@ public class UserModel {
 
     private String email;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlantModel> plants;
 }
