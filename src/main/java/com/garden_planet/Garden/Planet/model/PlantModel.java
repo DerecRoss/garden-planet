@@ -2,8 +2,14 @@ package com.garden_planet.Garden.Planet.model;
 
 import com.garden_planet.Garden.Planet.model.enums.PlantType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlantModel {
 
     @Id
