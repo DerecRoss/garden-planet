@@ -15,9 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class PlantController {
     private final PlantService plantService;
 
-    @PostMapping("/user/{Userid}")
-    public ResponseEntity<PlantModel> save(@PathVariable Long Userid,@RequestBody PlantDto plantDto) throws BadRequestException {
-        PlantModel plant = plantService.save(plantDto, Userid);
+    @PostMapping("/user/{id}")
+    public ResponseEntity<PlantModel> save(@PathVariable Long id,@RequestBody PlantDto plantDto) throws BadRequestException {
+        PlantModel plant = plantService.save(plantDto, id);
         return new ResponseEntity<>(plant, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) throws BadRequestException {
+        plantService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

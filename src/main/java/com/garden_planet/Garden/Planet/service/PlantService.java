@@ -15,6 +15,10 @@ public class PlantService {
     private final PlantRepository plantRepository;
     private final UserRepository userRepository;
 
+    public PlantModel findByIdOrThrowBadRequestException(Long id) throws BadRequestException {
+        return plantRepository.findById(id).orElseThrow(
+                () -> new BadRequestException("Plant can't be find"));
+    }
     public PlantModel save(PlantDto plantDto, Long userId) throws BadRequestException {
         UserModel user = userRepository.findById(userId)
                 .orElseThrow(() -> new BadRequestException("User can't be find"));
@@ -28,5 +32,9 @@ public class PlantService {
         plant.setUser(user);
 
         return plantRepository.save(plant);
+    }
+
+    public void delete(Long id) throws BadRequestException {
+        plantRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 }
