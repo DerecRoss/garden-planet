@@ -1,5 +1,6 @@
 package com.garden_planet.Garden.Planet.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.garden_planet.Garden.Planet.model.enums.PlantType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,5 +28,6 @@ public class PlantModel {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UserModel user;
 }
