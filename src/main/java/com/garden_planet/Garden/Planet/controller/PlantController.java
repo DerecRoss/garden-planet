@@ -26,4 +26,10 @@ public class PlantController {
         plantService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<PlantModel> update(@PathVariable Long id, @RequestBody PlantDto plantDto) throws BadRequestException {
+        PlantModel plant = plantService.update(id, plantDto);
+        return new ResponseEntity<>(plant, HttpStatus.NO_CONTENT);
+    }
 }

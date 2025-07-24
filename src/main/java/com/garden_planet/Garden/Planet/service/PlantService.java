@@ -34,6 +34,17 @@ public class PlantService {
         return plantRepository.save(plant);
     }
 
+    public PlantModel update(Long id, PlantDto plantDto) throws BadRequestException {
+        PlantModel plant = plantRepository.findById(id).orElseThrow(
+                () -> new BadRequestException("plant can't be find"));
+
+        plant.setName(plantDto.getName());
+        plant.setWater(plantDto.getWater());
+        plant.setSunlight(plantDto.getSunlight());
+        plant.setPlantType(plantDto.getPlantType());
+
+        return plantRepository.save(plant);
+    }
     public void delete(Long id) throws BadRequestException {
         plantRepository.delete(findByIdOrThrowBadRequestException(id));
     }
