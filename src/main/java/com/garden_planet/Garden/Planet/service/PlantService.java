@@ -7,13 +7,10 @@ import com.garden_planet.Garden.Planet.repository.UserRepository;
 import com.garden_planet.Garden.Planet.request.PlantDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,11 +50,8 @@ public class PlantService {
     public List<PlantModel> findAllPlants(Long id){
 
         UserModel user = userRepository.findById(id).orElseThrow();
-        List<PlantModel> plantsList = user.getPlants()
-                .stream()
-                .collect(Collectors.toList());
 
-        return plantsList;
+        return new ArrayList<>(user.getPlants());
     }
     public void delete(Long id) throws BadRequestException {
         plantRepository.delete(findByIdOrThrowBadRequestException(id));

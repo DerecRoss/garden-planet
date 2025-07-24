@@ -26,5 +26,4 @@ public class UserController {
     public List<UserModel> listAllNoPageable(){
         return userService.listNoPageable();
     }
-
 }

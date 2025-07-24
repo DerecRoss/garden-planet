@@ -4,8 +4,6 @@ import com.garden_planet.Garden.Planet.model.UserModel;
 import com.garden_planet.Garden.Planet.repository.UserRepository;
 import com.garden_planet.Garden.Planet.request.UserDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +24,5 @@ public class UserService {
         user.setEmail(userDto.getEmail());
         user.setPhone(userDto.getPhone());
         return userRepository.save(user);
-    }
-    public Page findAllPageable(Pageable pageable){
-        return userRepository.findAll(pageable);
     }
 }
